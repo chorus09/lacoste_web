@@ -1,6 +1,5 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
 import { use, useEffect } from "react";
 import { useStoreModal } from "@/hooks/use-store-modal";
 
@@ -15,13 +14,7 @@ const SetupPage = () => {
     }
   }, [isOpen, onOpen]);
 
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Setup Your Account</h1>
-      <p className="mt-2">Please fill in the details below to set up your account.</p>
-      <UserButton />
-    </div>
-  )
-}
+  return null;
+};
 
 export default SetupPage;
