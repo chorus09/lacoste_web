@@ -1,5 +1,5 @@
-import { PrismaClient } from "@/lib/generated/prisma";
 import prismadb from "@/lib/prismadb";
+import { BillboardForm } from "./components/billboard-form";
 
 
 const BillboardPage = async ({
@@ -12,7 +12,11 @@ const BillboardPage = async ({
    })
 
    return (
-      <div>Existing Billboard: {billboard?.label}</div>
+      <div className="flex-col">
+         <div className="flex-1 space-y-4 p-8 pt-6">
+            <BillboardForm initialData={billboard}/>
+         </div>
+      </div>
    );
 };
 
