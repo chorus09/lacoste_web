@@ -9,7 +9,7 @@ const SetupPage = () => {
 
   useEffect(() => {
     if (!isOpen) {
-      onOpen(); // 👉 deschide modalul automat
+      onOpen();
     }
   }, [isOpen, onOpen]);
 

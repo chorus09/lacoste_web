@@ -1,7 +1,7 @@
-import Navbar from "@/components/navbar";
-import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
+import prismadb from "@/lib/prismadb";
+import Navbar from "@/components/navbar";
 
 export default async function Layout({
   children,
@@ -11,6 +11,7 @@ export default async function Layout({
   params: { storeId: string };
 }) {
   const { userId } = await auth();
+
   if (!userId) {
     notFound();
   }
@@ -21,14 +22,14 @@ export default async function Layout({
       userId,
     },
   });
-
+  console.log(store);
   if (!store) {
     notFound();
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar storeId={params.storeId}/>
       {children}
     </>
   );

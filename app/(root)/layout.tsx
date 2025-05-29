@@ -18,10 +18,10 @@ export default async function RootLayout({
       userId,
     },
   });
-
-  if (!store) {
-    redirect("/setup");
+  console.log(store?.id);
+  if (store === null) {
+    redirect("/setup"); // ➤ redirecționăm la setup
   }
 
-  redirect(`/${store.id}`);
+  redirect(`/${store.id}`); // ➤ redirecționăm la dashboard
 }

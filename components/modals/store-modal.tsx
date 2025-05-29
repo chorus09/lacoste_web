@@ -36,20 +36,20 @@ export const StoreModal = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    try {
-      setLoading(true);
-      const response = await axios.post("/api/stores", data);
+  try {
+    setLoading(true);
+    const response = await axios.post("/api/stores", data);
+    console.log(response.data)
 
-      // Redirect către noul magazin creat
-      window.location.assign(`/${response.data.id}`);
-    } catch (error) {
-      toast.error("Something went wrong, please try again.");
-    } finally {
-      setLoading(false);
-      storeModal.onClose();
-      form.reset();
-    }
-  };
+    window.location.assign(`/${response.data.id}`);
+  } catch (error) {
+    toast.error("Something went wrong, please try again.");
+  } finally {
+    setLoading(false);
+    storeModal.onClose();
+    form.reset();
+  }
+};
 
   return (
     <Modal

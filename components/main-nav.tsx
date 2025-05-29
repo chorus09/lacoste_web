@@ -5,9 +5,10 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
 export function MainNav({
+   storeId,
    className,
    ...props
-}: React.HTMLAttributes<HTMLElement>) {
+}: { storeId: string } & React.HTMLAttributes<HTMLElement>) {
    const pathname = usePathname();
    const params = useParams();
 
