@@ -7,9 +7,12 @@ import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { useParams, useRouter } from "next/navigation";
 import { Billboard } from "@/lib/generated/prisma";
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
 
 interface BillboardClientProps {
-   data: Billboard[]
+   data: BillboardColumn[]
+
 }
 
 export const BillboardClient: React.FC<BillboardClientProps> = ({
@@ -31,6 +34,7 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({
             </Button>
          </div>
          <Separator />
+         <DataTable searchKey="label" columns={columns} data={data}/>
       </>
    );
 };
