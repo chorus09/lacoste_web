@@ -1,7 +1,13 @@
 "use client";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { SizeColumn } from "./columns";
+import {
+   DropdownMenu,
+   DropdownMenuContent,
+   DropdownMenuItem,
+   DropdownMenuLabel,
+   DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ColorColumn } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
@@ -11,11 +17,11 @@ import axios from "axios";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-   data: SizeColumn;
+   data: ColorColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({
-   data
+   data,
 }) => {
    const router = useRouter();
    const params = useParams();
@@ -25,17 +31,17 @@ export const CellAction: React.FC<CellActionProps> = ({
 
    const onCopy = (id: string) => {
       navigator.clipboard.writeText(id);
-      toast.success("Size Id copied to the clipboard.");
-   }
+      toast.success("Color Id copied to the clipboard.");
+   };
 
    const onDelete = async () => {
       try {
          setLoading(true);
-         await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
+         await axios.delete(`/api/${params.storeId}/colors/${data.id}`);
          router.refresh();
-         toast.success("Size deleted.");
+         toast.success("Color deleted.");
       } catch (error) {
-         toast.error("Make sure this size is not used in any products.");
+         toast.error("Make sure this color is not used in any products.");
       } finally {
          setLoading(false);
          setOpen(false);
@@ -63,7 +69,7 @@ export const CellAction: React.FC<CellActionProps> = ({
                   <Copy className="mr-2 h-4 w-4" />
                   Copy Id
                </DropdownMenuItem>
-               <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}>
+               <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/colors/${data.id}`)}>
                   <Edit className="mr-2 h-4 w-4" />
                   Update
                </DropdownMenuItem>
