@@ -31,7 +31,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import axios from "axios";
 
-import { Product, Image, Category, Color, Size } from "@/lib/generated/prisma";
+import { Product, Image, Category, Color, Size } from "@prisma/client";
 import { Trash } from "lucide-react";
 
 const formSchema = z.object({
