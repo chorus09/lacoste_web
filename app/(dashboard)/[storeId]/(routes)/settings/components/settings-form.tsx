@@ -3,7 +3,6 @@
 import * as z from "zod";
 import axios from "axios";
 import { useState } from "react";
-import { Store } from "@prisma/client";
 import { Trash } from "lucide-react";
 
 import { AlertModal } from "@/components/modals/alert-modal";
@@ -19,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Store } from "@prisma/client";
 
 interface SettingsFormProps {
    initialData?: Store; 
